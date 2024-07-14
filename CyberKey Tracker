@@ -19,7 +19,7 @@ def on_press(key):
 # Create a function called `on_release` that prints a message indicating which key was released, and if the escape key (`Key.esc`) is released, it returns `False` to stop the listener.
 
 def on_release(key):
-    print(f'Key {key} released')
+    print(f'Key {key} released') 
     if key == Key.esc:
         # Stop listener
         return False
