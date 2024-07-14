@@ -1,0 +1,33 @@
+# Installing this python module library for using Pip
+
+!pip install pynput
+
+# Import modules from the pynput library to handle keyboard events.
+
+
+import pynput
+from pynput.keyboard import Key, Listener
+
+# Create a function called on_press that prints a message showing the alphanumeric key pressed or, if it's a special key, catches the AttributeError and prints a message indicating a special key press
+
+def on_press(key):
+    try:
+        print(f'Alphanumeric key {key.char} pressed')
+    except AttributeError:
+        print(f'Special key {key} pressed')
+
+# Create a function called `on_release` that prints a message indicating which key was released, and if the escape key (`Key.esc`) is released, it returns `False` to stop the listener.
+
+def on_release(key):
+    print(f'Key {key} released')
+    if key == Key.esc:
+        # Stop listener
+        return False
+
+# Start the listener with functions to handle key presses and releases, keeping it active until the escape key stops it.
+
+# Collect events until released
+with Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
+
+
